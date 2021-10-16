@@ -22,9 +22,11 @@ after_success:
   # We don’t want to run a build for a this commit in order to avoid circular builds:
   # add [ci skip] to the git commit message
   - git commit --message "Snapshot autobuild N.$TRAVIS_BUILD_NUMBER [ci skip]"
-  - git push origin-master
+  #- git push origin-master
+  #- git push --set-upstream origin-master master
+  -git push origin-master HEAD:master
 
-    
+
 
 
 #  - git checkout -b builds
