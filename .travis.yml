@@ -16,14 +16,12 @@ script: pyinstaller --onefile main.py
 after_success:
   - git config --global user.email "L00169827@student.lyit.ie"
   - git config --global user.name "vrednyj"
-  - git checkout -b builds
-  - git status
   - git add .
   - git status
   - git commit --message "Builds again     "
   - git status
-  - git remote add builds_branch https://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/vrednyj/experiment_2.git
-  - git status
-  - git push origin builds:builds
-  - git status
-  - git push --set-upstream builds_branch builds
+#  - git remote add builds_branch https://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/vrednyj/experiment_2.git
+#  - git status
+#  - git push origin builds:builds
+#  - git status
+  - git push --set-upstream origin master
