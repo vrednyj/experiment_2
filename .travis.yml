@@ -22,7 +22,7 @@ after_success:
   - git add ./travis/.
   - git status
   after_success:
-  - git commit --message "Builds again "
+  - git commit --message "Builds again     "
   - git status
   after_success:
   - git remote add origin https://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/vrednyj/Experiment.git
