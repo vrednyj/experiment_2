@@ -1,0 +1,34 @@
+language: python            # this works for Linux but is an error on macOS or Windows
+jobs:
+  include:
+    - name: "Python 3.8.0 on Windows"
+      os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: python' is an error on Travis CI Windows
+      before_install:
+        - choco install python --version 3.8.0
+        - python -m pip install --upgrade pip
+        - python -m pip install pyinstaller
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+install: pip3 install --upgrade pip  # all three OSes agree about 'pip3'
+# 'python' points to Python 2.7 on macOS but points to Python 3.8 on Linux and Windows
+# 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
+script: pyinstaller --onefile main.py
+after_success:
+  - git config --global user.email "L00169827@student.lyit.ie"
+  - git config --global user.name "vrednyj"
+  - git checkout -b builds
+  - git status
+  after_success:
+  - git add ./travis/.
+  - git status
+  after_success:
+  - git commit --message "Builds again "
+  - git status
+  after_success:
+  - git remote add origin https://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/vrednyj/Experiment.git
+  - git status
+  after_success:
+  - git push origin builds:builds
+  - git status
+  after_success:
+  - git push --set-upstream origin main
