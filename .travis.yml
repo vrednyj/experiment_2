@@ -20,7 +20,7 @@ after_success:
   - git add .
   - git status
   - git commit --message "Builds again     "
-#  - git status
+  - git status
 #  - git remote add builds_origin https://https://github.com/vrednyj/experiment_2.git
 #  - git push https://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@github.com//vrednyj/experiment_2.git
 #token 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
