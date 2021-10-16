@@ -20,16 +20,18 @@ after_success:
   - git add .
   - git status
   - git commit --message "Builds again     "
-  - git status
-  - git remote add builds_origin https://https://github.com/vrednyj/experiment_2.git
+#  - git status
+#  - git remote add builds_origin https://https://github.com/vrednyj/experiment_2.git
+#  - git push https://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@github.com//vrednyj/experiment_2.git
 #token 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
   - git status
-  - git push builds_origin builds:builds
+  #- git push builds_origin builds:builds
+  - git push https://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@github.com//vrednyj/experiment_2.git builds:builds
   - git status
-  - git push --set-upstream builds_origin builds
-  - username: vrednyj
-  - password: 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
-
+#  - git push --set-upstream builds_origin builds
+#  - username: vrednyj
+#  - password: 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
+#git push https://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@github.com//vrednyj/experiment_2.git
 #before_deploy:
 # Set up git user name and tag this commit
 #  - git config --local user.name "L00169827@student.lyit.ie"
