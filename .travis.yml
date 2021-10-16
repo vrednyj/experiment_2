@@ -16,19 +16,30 @@ script: pyinstaller --onefile main.py
 after_success:
   - git config --global user.email "L00169827@student.lyit.ie"
   - git config --global user.name "vrednyj"
-  - git checkout -b builds
+  - git remote add origin-master https://${AUTOBUILD_TOKEN}@github.com/vrednyj/experiment_2.git > /dev/null 2>&1
   - git add .
-  - git status
-  - git commit --message "Builds again     "
-  - git status
+
+  # We don’t want to run a build for a this commit in order to avoid circular builds:
+  # add [ci skip] to the git commit message
+  - git commit --message "Snapshot autobuild N.$TRAVIS_BUILD_NUMBER [ci skip]"
+  - git push origin-master
+
+    
+
+
+#  - git checkout -b builds
+#  - git add .
+#  - git status
+#  - git commit --message "Builds again     "
+#  - git status
 #  - git remote add builds_origin https://https://github.com/vrednyj/experiment_2.git
 #  - git push https://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@github.com//vrednyj/experiment_2.git
-  - git push https://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@github.com//vrednyj/experiment_2.git
+#  - git push https://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@github.com//vrednyj/experiment_2.git
 # enother token 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
-  - git status
+#  - git status
   #- git push builds_origin builds:builds
-  - git push https://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@github.com//vrednyj/experiment_2.git builds:builds
-  - git status
+#  - git push https://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@github.com//vrednyj/experiment_2.git builds:builds
+#  - git status
 #  - git push --set-upstream builds_origin builds
 #  - username: vrednyj
 #  - password: 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
@@ -47,3 +58,4 @@ after_success:
 #  skip_cleanup: true
 #  on:
 #    tags: true
+
