@@ -21,7 +21,7 @@ after_success:
   - git status
   - git commit --message "Builds again     "
   - git status
-  - git remote add builds_origin https://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/vrednyj/experiment_2.git
+  - git remote add builds_origin https://github.com/vrednyj/experiment_2.git
   - git status
   - git push builds_origin builds:builds
   - git status
