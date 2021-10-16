@@ -18,7 +18,7 @@ after_success:
   - git config --global user.name "vrednyj"
   - git checkout -b builds
   - git status
-  - git add ./travis/.
+  - git add .
   - git status
   - git commit --message "Builds again     "
   - git status
