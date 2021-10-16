@@ -14,30 +14,31 @@ install: pip3 install --upgrade pip  # all three OSes agree about 'pip3'
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 script: pyinstaller --onefile main.py
 after_success:
-#  - git config --global user.email "L00169827@student.lyit.ie"
-#  - git config --global user.name "vrednyj"
-#  - git checkout -b builds
-#  - git add .
-#  - git status
-#  - git commit --message "Builds again     "
-#  - git status
-#  - git remote add builds_origin https://github.com/vrednyj/experiment_2.git
-#  - git status
-#  - git push builds_origin builds:builds
-#  - git status
-#  - git push --set-upstream builds_origin builds
+  - git config --global user.email "L00169827@student.lyit.ie"
+  - git config --global user.name "vrednyj"
+  - git checkout -b builds
+  - git add .
+  - git status
+  - git commit --message "Builds again     "
+  - git status
+  - git remote add builds_origin https://${GH_TOKEN}/vrednyj/experiment_2.git
+  - git status
+  - git push builds_origin builds:builds
+  - git status
+  - git push --set-upstream builds_origin builds
+  -
 
-before_deploy:
-  # Set up git user name and tag this commit
-  - git config --local user.name "L00169827@student.lyit.ie"
-  - git config --local user.email "vrednyj"
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  - git tag $TRAVIS_TAG
-deploy:
-  provider: releases
-  api_key: zY6FzK4VLH2XgVjjsXxB
-  file_glob: true
-  file: build/**/*
-  skip_cleanup: true
-  on:
-    tags: true
+#before_deploy:
+# Set up git user name and tag this commit
+#  - git config --local user.name "L00169827@student.lyit.ie"
+#  - git config --local user.email "vrednyj"
+#  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+#  - git tag $TRAVIS_TAG
+#deploy:
+#  provider: releases
+#  api_key: zY6FzK4VLH2XgVjjsXxB
+#  file_glob: true
+#  file: build/**/*
+#  skip_cleanup: true
+#  on:
+#    tags: true
